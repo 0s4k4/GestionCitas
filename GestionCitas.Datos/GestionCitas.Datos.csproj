@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GestionCitas.Entidades\GestionCitas.Entidades.csproj" />
+    <ProjectReference Include="..\GestionCitas.Logica\GestionCitas.Logica.csproj" />
+    <ProjectReference Include="..\GestionCitas.Presentacion\GestionCitas.Presentacion.csproj" />
+  </ItemGroup>
+
+</Project>
