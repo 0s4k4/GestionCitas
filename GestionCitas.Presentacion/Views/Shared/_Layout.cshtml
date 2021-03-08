@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Clinica - @ViewBag.title</title>
+    <title>Clínica - @ViewBag.title</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -30,6 +30,10 @@
 
     @RenderSection("Styles", false)
 
+    <link rel="stylesheet" type="text/css" href="~/DevExtreme/css/dx.spa.css" />
+    <link rel="stylesheet" type="text/css" href="~/DevExtreme/css/dx.common.css" />
+    <link rel="dx-theme" data-theme="generic.light" href="~/DevExtreme/css/dx.light.css" />
+
     <!-- ./wrapper -->
     <!-- jQuery 3 -->
     <script src="~/AdminLte/bower_components/jquery/dist/jquery.min.js"></script>
@@ -45,6 +49,21 @@
     <script src="~/AdminLte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="~/AdminLte/js/demo.js"></script>
+    <!-- DevExtreme -->
+    <script src="~/DevExtreme/js/dx.all.js"></script>
+    <script src="~/DevExtreme/js/globalize.min.js"></script>
+    <script src="~/DevExtreme/js/globalize/message.min.js"></script>
+    <script src="~/DevExtreme/js/localization/dx.messages.es.js"></script>
+    <script>
+        //con esta línea DevExtreme se adapta al lenguaje del navegador
+        DevExpress.localization.locale(navigator.language || navigator.browserLanguage);
+    </script>
+    <!-- End DevExtreme -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="~/Scripts/jquery-ui.js"></script>
+
+    <script src="~/Scripts/datepicker-es.js"></script>
+    <script src="~/Scripts/util.js"></script>
     @RenderSection("ScriptsCode", required: false)
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -96,43 +115,43 @@
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">Menú de Navegación</li>
-                    <li id="otpGestionCita" class="treeview">
-                        <a href="#">
-                            <i class="fa fa-edit"></i> <span>Gestión de Citas</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li id="optRegistrarCita" class="enlaceMenu"><a href="@Url.Action("Index", "Cita")"><i class="fa fa-circle-o"></i> Registrar Cita</a></li>
-                            <li id="optRegistrarAtencion" class="enlaceMenu"><a href="@Url.Action("Atencion", "Cita")"><i class="fa fa-circle-o"></i> Registrar Atención</a></li>
-                        </ul>
-                    </li>
-                    <li id="otpGestionPersonal" class="treeview">
-                        <a href="#">
-                            <i class="fa fa-edit"></i> <span>Gestión de Personal</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li id="optListarMedicos" class="enlaceMenu"><a href="@Url.Action("VisualizarMedicos", "Medico")"><i class="fa fa-circle-o"></i> Horario de Médicos</a></li>
-                        </ul>
-                    </li>
+                            <li id="otpGestionCita" class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-edit"></i> <span>Gestión de Citas</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li id="optRegistrarCita" class="enlaceMenu"><a href="@Url.Action("Index", "Cita")"><i class="fa fa-circle-o"></i> Registrar Cita</a></li>
+                                    <li id="optRegistrarAtencion" class="enlaceMenu"><a href="@Url.Action("Atencion", "Cita")"><i class="fa fa-circle-o"></i> Registrar Atención</a></li>
+                                </ul>
+                            </li>
+                                <li id="otpGestionPersonal" class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-edit"></i> <span>Gestión de Personal</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li id="optListarMedicos" class="enlaceMenu"><a href="@Url.Action("VisualizarMedicos", "Medico")"><i class="fa fa-circle-o"></i> Horario de Médicos</a></li>
+                                    </ul>
+                                </li>
 
-                    <li id="optMantenimiento" class="treeview">
-                        <a href="#">
-                            <i class="fa fa-table"></i> <span>Mantenimiento</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li id="optEspecialidades" class="enlaceMenu"><a href="@Url.Action("Index", "Especialidad")"><i class="fa fa-circle-o"></i> Especialidades</a></li>
-                            <li id="optMedicos" class="enlaceMenu"><a href="@Url.Action("Index", "Medico")"><i class="fa fa-circle-o"></i> Medicos</a></li>
-                            <li id="optPacientes" class="enlaceMenu"><a href="@Url.Action("Index", "Paciente")"><i class="fa fa-circle-o"></i> Pacientes</a></li>
-                        </ul>
-                    </li>
+                                <li id="optMantenimiento" class="treeview">
+                                    <a href="#">
+                                        <i class="fa fa-table"></i> <span>Mantenimiento</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li id="optEspecialidades" class="enlaceMenu"><a href="@Url.Action("Index", "Especialidad")"><i class="fa fa-circle-o"></i> Especialidades</a></li>
+                                        <li id="optMedicos" class="enlaceMenu"><a href="@Url.Action("Index", "Medico")"><i class="fa fa-circle-o"></i> Medicos</a></li>
+                                        <li id="optPacientes" class="enlaceMenu"><a href="@Url.Action("Index", "Paciente")"><i class="fa fa-circle-o"></i> Pacientes</a></li>
+                                    </ul>
+                                </li>
                 </ul>
             </section>
             <!-- /.sidebar -->
@@ -151,7 +170,7 @@
             <section class="content">
                 <!-- Default box -->
                 <div class="box">
-                    <div id="contenidoPagina" style="min-height:65vh" class="box-body">
+                    <div id="contenidoPagina" style="display:none;min-height:65vh" class="box-body">
                         @RenderBody()
                         <div id="contenido"></div>
                     </div>
